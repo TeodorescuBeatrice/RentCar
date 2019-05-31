@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace RentC.Entities
 {
-    public class Role
+    [Serializable]
+    public class Coupon
     {
         [Key]
-        public int RoleID { get; set; }
-        public string Name { get; set; }
+        public string CouponCode { get; set; }
         public string Description { get; set; }
+        public decimal Discount { get; set; }
 
-        public List<User> Users { get; set; }
-        public List<RolesPermission> RolesPermissions { get; set; }
+        public List<Reservation> Reservations { get; set; }
+
     }
 }

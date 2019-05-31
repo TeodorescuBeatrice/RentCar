@@ -1,21 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using System.Data.SqlClient;
 using RentC.Entities;
 
 namespace RentC
 {
     public class RentCDb : DbContext
     {
-        public RentCDb(string connectionString)
+        // Build connection string
+        SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder
         {
-          
+            DataSource = "DESKTOP-A0CPMR3\\SQLEXPRESS",
+            InitialCatalog = "academy_net",
+            IntegratedSecurity = true
+        };
+
+        public RentCDb()
+        { 
             Database.SetInitializer<RentCDb>(new CreateDatabaseIfNotExists<RentCDb>());
-           
-            this.Database.Connection.ConnectionString = connectionString;
+            Database.Connection.ConnectionString = builder.ConnectionString;
         }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Coupon> Coupons { get; set; }

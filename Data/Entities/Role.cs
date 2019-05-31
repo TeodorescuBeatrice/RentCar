@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace RentC.Entities
 {
-    public class Permission
+    [Serializable]
+    public class Role
     {
         [Key]
-        public int PermissionID { get; set; }
+        public int RoleID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public List<User> Users { get; set; }
         public List<RolesPermission> RolesPermissions { get; set; }
     }
 }

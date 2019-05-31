@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace RentC.Entities
 {
+    [Serializable]
     public class Customer
     {
         [Key]
         public int CostumerID { get; set; }
         public string Name { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
         public string Location { get; set; }
 

@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace RentC.Entities
 {
-    public class Coupon
+    [Serializable]
+    public class ReservationStatus
     {
         [Key]
-        public string CouponCode { get; set; }
+        public Byte ReservStatsID { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Discount { get; set; }
 
         public List<Reservation> Reservations { get; set; }
 
